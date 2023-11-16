@@ -7,14 +7,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @org.springframework.stereotype.Controller
 public class Controller {
+
+    Spielfeld spielfeld = new Spielfeld();
     @GetMapping("/")
-    public String startseite(Model model, Spielfeld spielfeld){
+    public String startseite(Model model){
         model.addAttribute("spielfeld", spielfeld.getPlaetze());
         return "Startseite";
     }
 
     @PostMapping("/")
-    public String eingabe(@RequestParam String eingabe, Model model, Spielfeld spielfeld){
+    public String durchEingabeBewegen(@RequestParam String eingabe, Model model){
+        try{
+            int von = Integer.parseInt(eingabe.split(" ")[0]);
+            int zu = Integer.parseInt(eingabe.split(" ")[1]);
+
+            Figur zuBewegendeFigur = spielfeld.getPlaetze().get(von / 8).get(von % 8).getAktuelleFigur();
+            Platz zuPlatz = spielfeld.getPlaetze().get(zu / 8).get(zu % 8);
+
+            zuBewegendeFigur.zug(zuPlatz, spielfeld);
+        } catch (Exception e){
+            System.out.println("Ungültige Eingabe");
+        }
+
         model.addAttribute("spielfeld", spielfeld.getPlaetze());
         return "Startseite";
     }

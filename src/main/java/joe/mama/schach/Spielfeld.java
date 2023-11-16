@@ -1,13 +1,10 @@
 package joe.mama.schach;
 
 import joe.mama.schach.Figuren.*;
-import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
 
 public class Spielfeld {
     private final List<List<Platz>> plaetze;
@@ -15,16 +12,17 @@ public class Spielfeld {
     public Spielfeld(){
         this.plaetze = plaetzeGenerieren();
     }
+
     private List<List<Platz>> plaetzeGenerieren() {
         AtomicInteger counter = new AtomicInteger(1);
 
-        return IntStream.rangeClosed(1, 64)
+        return IntStream.rangeClosed(0, 63)
                 .boxed()
-                .collect(Collectors.groupingBy(nummer -> (nummer - 1) / 8))
+                .collect(Collectors.groupingBy(nummer -> nummer / 8))
                 .values()
                 .stream()
                 .map(subList -> subList.stream()
-                        .map(nummer -> new Platz(16 >= nummer || nummer >= 48, nummer, farbeEntscheiden(counter.getAndIncrement()), this))
+                        .map(nummer -> new Platz(15 >= nummer || nummer >= 47, nummer, farbeEntscheiden(counter.getAndIncrement()), this))
                         .collect(Collectors.toList()))
                 .collect(Collectors.toList());
 
@@ -39,34 +37,33 @@ public class Spielfeld {
     }
 
     public Figur figurenInitialisieren(int nummer) {
-        if (nummer >= 9 && nummer <= 16){
+        if (nummer >= 8 && nummer <= 15){
             return new Bauer("Bauer", 1, nummer, "weiß");
-        } else if (nummer >= 49 && nummer <= 56) {
+        } else if (nummer >= 48 && nummer <= 55) {
             return new Bauer("Bauer", 1, nummer, "schwarz");
-        } else if (List.of(1, 8).contains(nummer)){
+        } else if (List.of(0, 7).contains(nummer)){
             return new Turm("Turm", 5, nummer, "weiß");
-        } else if (List.of(57, 64).contains(nummer)) {
+        } else if (List.of(56, 63).contains(nummer)) {
             return new Turm("Turm", 5, nummer, "schwarz");
-        } else if (List.of(2, 7).contains(nummer)){
+        } else if (List.of(1, 6).contains(nummer)){
             return new Pferd("Pferd", 3, nummer, "weiß");
-        } else if (List.of(58, 63).contains(nummer)) {
+        } else if (List.of(57, 62).contains(nummer)) {
             return new Pferd("Pferd", 3, nummer, "schwarz");
-        } else if (List.of(3, 6).contains(nummer)){
+        } else if (List.of(2, 5).contains(nummer)){
             return new Läufer("Läufer", 3, nummer, "weiß");
-        } else if (List.of(59, 62).contains(nummer)) {
+        } else if (List.of(58, 61).contains(nummer)) {
             return new Läufer("Läufer", 3, nummer, "schwarz");
-        } else if (nummer == 4){
+        } else if (nummer == 3){
             return new König("König", 0, nummer, "weiß");
-        } else if (nummer == 60) {
+        } else if (nummer == 59) {
             return new König("König", 0, nummer, "schwarz");
-        } else if (nummer == 5) {
+        } else if (nummer == 4) {
             return new Königin("Königin", 9, nummer, "weiß");
-        } else if (nummer == 61) {
+        } else if (nummer == 60) {
             return new Königin("Königin", 9, nummer, "schwarz");
         } else {
             return new Figur("", 0, nummer, "");
         }
-
     }
 
 }

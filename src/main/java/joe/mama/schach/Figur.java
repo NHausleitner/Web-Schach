@@ -2,6 +2,12 @@ package joe.mama.schach;
 
 public class Figur {
 
+    private final String name;
+    private final int wert;
+    private int position;
+    private final String farbe;
+
+
     public Figur(String name, int wert, int position, String farbe) {
         this.name = name;
         this.wert = wert;
@@ -9,20 +15,16 @@ public class Figur {
         this.farbe = farbe;
     }
 
+    public String getFarbe() {
+        return farbe;
+    }
+
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getWert() {
         return wert;
-    }
-
-    public void setWert(int wert) {
-        this.wert = wert;
     }
 
     public int getPosition() {
@@ -33,10 +35,24 @@ public class Figur {
         this.position = position;
     }
 
-    private String name;
-    private int wert;
-    private int position;
-    private String farbe;
+    public void zug(Platz zu, Spielfeld spielfeld){
+        Platz zuPlatz = getZuPlatz(zu.getNummer(), spielfeld);
+        Platz vonPlatz = getVonPlatz(spielfeld);
+        zuPlatz.setAktuelleFigur(vonPlatz.getAktuelleFigur());
+        zuPlatz.setBelegt(true);
+        vonPlatz.setAktuelleFigur(new Figur("", 0, vonPlatz.getNummer(), ""));
+        vonPlatz.setBelegt(false);
+
+        position = zu.getNummer();
+    }
+
+    public Platz getVonPlatz(Spielfeld spielfeld) {
+        return spielfeld.getPlaetze().get(position / 8).get(position % 8);
+    }
+
+    public static Platz getZuPlatz(int zu, Spielfeld spielfeld) {
+        return spielfeld.getPlaetze().get(zu / 8).get(zu % 8);
+    }
 
 
 }
