@@ -1,4 +1,4 @@
-package joe.mama.schach;
+package schach;
 
 public class Spieler {
 

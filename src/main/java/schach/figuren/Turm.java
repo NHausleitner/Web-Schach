@@ -1,6 +1,6 @@
-package joe.mama.schach.Figuren;
+package schach.figuren;
 
-import joe.mama.schach.Figur;
+import schach.Figur;
 
 public class Turm extends Figur {
 

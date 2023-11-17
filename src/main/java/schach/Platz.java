@@ -1,14 +1,10 @@
-package joe.mama.schach;
-
-import joe.mama.schach.Figuren.*;
-
-import java.util.List;
+package schach;
 
 public class Platz {
-    private int nummer;
+    private final int nummer;
     private boolean belegt;
     private Figur aktuelleFigur;
-    private String feldfarbe;
+    private final String feldfarbe;
 
     public Platz(boolean belegt, int nummer, String feldfarbe, Spielfeld spielfeld){
         this.belegt = belegt;
@@ -33,15 +29,6 @@ public class Platz {
     }
     public int getNummer() {
         return this.nummer;
-    }
-    public void setNummer(int nummer) {
-        this.nummer = nummer;
-    }
-    public String getFeldfarbe(){
-        return this.feldfarbe;
-    }
-    public void setFeldfarbe(String feldfarbe){
-        this.feldfarbe = feldfarbe;
     }
 
 }

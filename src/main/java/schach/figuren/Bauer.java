@@ -1,8 +1,8 @@
-package joe.mama.schach.Figuren;
+package schach.figuren;
 
-import joe.mama.schach.Figur;
-import joe.mama.schach.Platz;
-import joe.mama.schach.Spielfeld;
+import schach.Figur;
+import schach.Spielfeld;
+import schach.Platz;
 
 public class Bauer extends Figur {
 
