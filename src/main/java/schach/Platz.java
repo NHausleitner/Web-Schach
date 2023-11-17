@@ -21,7 +21,7 @@ public class Platz {
     public void setAktuelleFigur(Figur figur){
         this.aktuelleFigur = figur;
     }
-    public boolean getBelegt() {
+    public boolean istBelegt() {
         return this.belegt;
     }
     public void setBelegt(boolean belegt) {

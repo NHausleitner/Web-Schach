@@ -12,7 +12,7 @@
 
     <table border="1">
         <tr th:each="platzReihe : ${spielfeld}">
-            <td th:each="platz : ${platzReihe}" th:text="${platz.getAktuelleFigur().getName()}" width="50", height="50">  </td>
+            <td th:each="platz : ${platzReihe}" th:text="${platz.getAktuelleFigur().getName()} + ${platz.getAktuelleFigur().getSpieler().getFarbe()} + ${platz.getNummer()}" width="100" height="100">  </td>
         </tr>
     </table>
 

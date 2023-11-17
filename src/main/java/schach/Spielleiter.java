@@ -1,7 +1,14 @@
 package schach;
 
 public class Spielleiter {
-    public static void main(String[] args) {
+    private String farbeAmZug;
 
+    public Spielleiter(){
+        this.farbeAmZug = "weiß";
     }
+
+    public void gezogen(){
+        farbeAmZug = farbeAmZug.equals("weiß") ? "schwarz" : "weiß";
+    }
+
 }

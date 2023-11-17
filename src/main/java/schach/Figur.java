@@ -5,18 +5,18 @@ public class Figur {
     private final String name;
     private final int wert;
     private int position;
-    private final String farbe;
+    private final Spieler spieler;
 
 
-    public Figur(String name, int wert, int position, String farbe) {
+    public Figur(String name, int wert, int position, Spieler spieler) {
         this.name = name;
         this.wert = wert;
         this.position = position;
-        this.farbe = farbe;
+        this.spieler = spieler;
     }
 
-    public String getFarbe() {
-        return farbe;
+    public Spieler getSpieler() {
+        return spieler;
     }
 
     public String getName() {
@@ -35,15 +35,7 @@ public class Figur {
         this.position = position;
     }
 
-    public void zug(Platz zu, Spielfeld spielfeld){
-        Platz zuPlatz = getZuPlatz(zu.getNummer(), spielfeld);
-        Platz vonPlatz = getVonPlatz(spielfeld);
-        zuPlatz.setAktuelleFigur(vonPlatz.getAktuelleFigur());
-        zuPlatz.setBelegt(true);
-        vonPlatz.setAktuelleFigur(new Figur("", 0, vonPlatz.getNummer(), ""));
-        vonPlatz.setBelegt(false);
-
-        position = zu.getNummer();
+    public void zug(Platz zuPlatz, Spielfeld spielfeld, Spielleiter spielleiter){
     }
 
     public Platz getVonPlatz(Spielfeld spielfeld) {
@@ -53,6 +45,5 @@ public class Figur {
     public static Platz getZuPlatz(int zu, Spielfeld spielfeld) {
         return spielfeld.getPlaetze().get(zu / 8).get(zu % 8);
     }
-
 
 }
