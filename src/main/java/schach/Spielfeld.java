@@ -27,7 +27,7 @@ public class Spielfeld {
                 .values()
                 .stream()
                 .map(subList -> subList.stream()
-                        .map(nummer -> new Platz(15 >= nummer || nummer >= 47, nummer, farbeEntscheiden(counter.getAndIncrement()), this))
+                        .map(nummer -> new Platz(15 >= nummer || nummer >= 48, nummer, farbeEntscheiden(counter.getAndIncrement()), this))
                         .collect(Collectors.toList()))
                 .collect(Collectors.toList());
 
@@ -71,7 +71,7 @@ public class Spielfeld {
         }
     }
 
-    public Set<Integer> getAlleBelegtenNummern(){
+    public Set<Integer> getAlleBelegtenNummern(Spieler spieler){
         Set<Integer> alleBelegtenNummern = new HashSet<>();
         plaetze.stream()
                 .flatMap(List::stream)

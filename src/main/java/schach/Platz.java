@@ -13,8 +13,6 @@ public class Platz {
         this.aktuelleFigur = spielfeld.figurenInitialisieren(nummer);
     }
 
-
-
     public Figur getAktuelleFigur() {
         return this.aktuelleFigur;
     }

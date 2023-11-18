@@ -22,7 +22,7 @@ public class Bauer extends Figur {
                 return;
             }
             if (!getZuPlatz(zuNummer, spielfeld).istBelegt() && zuNummer == getPosition() + 8){
-                bewegen(zuPlatz, spielfeld);
+                super.bewegen(zuPlatz, spielfeld);
                 return;
             }
         }
@@ -37,24 +37,13 @@ public class Bauer extends Figur {
     private void schlagen(Platz zuPlatz, Spielfeld spielfeld){
         int zuNummer = zuPlatz.getNummer();
         if ((zuNummer == getPosition() + 8 - 1 || zuNummer == getPosition() + 8 + 1) && zuNummer <= 63){
-            bewegen(zuPlatz, spielfeld);
+            super.bewegen(zuPlatz, spielfeld);
             return;
             // Spielerscore hinzufügen
         }
         System.out.println("Fehlerhafte Eingabe für Bauer, welcher von " + getVonPlatz(spielfeld).getNummer() + " zu " + getZuPlatz(zuNummer, spielfeld).getNummer() + " laufen wollte." );
     }
 
-    private void bewegen(Platz zuPlatz, Spielfeld spielfeld){
-        int zuNummer = zuPlatz.getNummer();
-        System.out.println("Bauer bewegt von " + getVonPlatz(spielfeld).getNummer() + " zu " + getZuPlatz(zuNummer, spielfeld).getNummer());
-        Platz vonPlatz = getVonPlatz(spielfeld);
-        zuPlatz.setAktuelleFigur(vonPlatz.getAktuelleFigur());
-        zuPlatz.setBelegt(true);
-        vonPlatz.setAktuelleFigur(new Figur("", 0, vonPlatz.getNummer(), new Spieler("dummy", "")));
-        vonPlatz.setBelegt(false);
-
-        setPosition(zuNummer);
-    }
 
 
 
