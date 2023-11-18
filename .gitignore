@@ -6,6 +6,9 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+
 /build/
 /gradle/
 /.gradle/
+.idea/
+HELP.md
