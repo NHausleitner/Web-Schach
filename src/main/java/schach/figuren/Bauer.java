@@ -3,6 +3,7 @@ package schach.figuren;
 import schach.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Bauer extends Figur {
@@ -13,6 +14,8 @@ public class Bauer extends Figur {
 
     @Override
     public void zug(Platz zuPlatz, Spielfeld spielfeld, Spielleiter spielleiter){
+        List<Integer> startpositionen = List.of(8, 9, 10, 11, 12, 13, 14, 15);
+        int vonNummer = getVonPlatz(spielfeld).getNummer();
         int zuNummer = zuPlatz.getNummer();
         Figur vonAktuelleFigur = getVonPlatz(spielfeld).getAktuelleFigur();
         if (zuNummer >= 0 && zuNummer <= 63){
@@ -22,6 +25,10 @@ public class Bauer extends Figur {
                 return;
             }
             if (!getZuPlatz(zuNummer, spielfeld).istBelegt() && zuNummer == getPosition() + 8){
+                bewegen(zuPlatz, spielfeld);
+                return;
+            }
+            if(!getZuPlatz(zuNummer, spielfeld).istBelegt() && startpositionen.contains(vonNummer)){
                 bewegen(zuPlatz, spielfeld);
                 return;
             }
