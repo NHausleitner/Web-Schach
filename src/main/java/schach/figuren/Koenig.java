@@ -9,7 +9,7 @@ public class Koenig extends Figur {
     }
 
     @Override
-    public void zug(Platz zuPlatz, Spielfeld spielfeld, Spielleiter spielleiter){
+    public void zug(Platz zuPlatz, Spielfeld spielfeld){
         int zuNummer = zuPlatz.getNummer();
     }
 }

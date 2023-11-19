@@ -12,7 +12,7 @@ public class Bauer extends Figur {
     }
 
     @Override
-    public void zug(Platz zuPlatz, Spielfeld spielfeld, Spielleiter spielleiter){
+    public void zug(Platz zuPlatz, Spielfeld spielfeld){
         int zuNummer = zuPlatz.getNummer();
         Figur vonAktuelleFigur = getVonPlatz(spielfeld).getAktuelleFigur();
         if (zuNummer >= 0 && zuNummer <= 63){

@@ -12,7 +12,7 @@ public class Koenigin extends Figur {
     }
 
     @Override
-    public void zug(Platz zuPlatz, Spielfeld spielfeld, Spielleiter spielleiter){
+    public void zug(Platz zuPlatz, Spielfeld spielfeld){
         int zuNummer = zuPlatz.getNummer();
         Figur vonAktuelleFigur = getVonPlatz(spielfeld).getAktuelleFigur();
         int vonNummer = vonAktuelleFigur.getPosition();

@@ -34,7 +34,7 @@ public class Figur {
         this.position = position;
     }
 
-    public void zug(Platz zuPlatz, Spielfeld spielfeld, Spielleiter spielleiter){
+    public void zug(Platz zuPlatz, Spielfeld spielfeld){
     }
 
     public void bewegen(Platz zuPlatz, Spielfeld spielfeld){
